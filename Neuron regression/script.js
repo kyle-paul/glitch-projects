@@ -1,3 +1,9 @@
+// notification when the model is loaded
+const status = document.getElementById('status');
+if (status) {
+  status.innerText = 'Loaded TensorFlow.js - version: ' + tf.version.tfjs;
+}
+
 // Import training dataset from link
 import {TRAINING_DATA} from 'https://storage.googleapis.com/jmstore/TensorFlowJS/EdX/TrainingData/real-estate-data.js';
 
@@ -62,13 +68,13 @@ async function train() {
     const LEARNING_RATE = 0.01;
     
     // Compile the the model with defined learning_rate and loss function
-    model.compile({
+    model.compile({  
         optimizer: tf.train.sgd(LEARNING_RATE),
         loss: 'meanSquaredError',
     });
 
     // Finally do the training
-    let results = await model.fit(FEATURE_RESULTS, NORMALIZED_VALUES, OUTPUTS_TENSOR, {
+    let results = await model.fit(FEATURE_RESULTS.NORMALIZED_VALUES, OUTPUTS_TENSOR, {
         validationSplit: 0.15,  // Take aside 15% of the data to use for validation testing
         shuffle: true,   // Ensure data is shuffled in case it was in an order
         batchSize: 64,   // Batch size is set to 64 as the number of samples is large
@@ -85,4 +91,21 @@ async function train() {
     evaluate();
 }
 
-train()
+// define the evaluate function
+function evaluate() {
+    // Predict answer for single piece of data
+    tf.tidy(function() {
+        let newInput = normalize(tf.tensor2d([[750, 1]]), FEATURE_RESULTS.MIN_VALUES, FEATURE_RESULTS.MAX_VALUES);
+        let output = model.predict(newInput.NORMALIZED_VALUES);
+        output.print();
+    });
+
+    // dispose to avoid memory leakage
+    FEATURE_RESULTS.MIN_VALUES.dispose();
+    FEATURE_RESULTS.MAX_VALUES.dispose();
+    model.dispose();
+
+    console.log("--------------------------------");
+    console.log(tf.memory().numTensors);
+}
+
