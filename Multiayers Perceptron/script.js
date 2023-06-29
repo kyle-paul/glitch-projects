@@ -60,8 +60,8 @@ INPUTS_TENSOR.dispose();
 const model = tf.sequential();
 
 // We will use one dense layer with 1 neuron (unit) and an input of 2 input feature values (representing house size and number of rooms)
-model.add(tf.layers.dense({inputShape: [1], units: 100, activation: 'relu'}));
-model.add(tf.layers.dense({units: 100, activation: 'relu'}));
+model.add(tf.layers.dense({inputShape: [1], units: 25, activation: 'relu'}));
+model.add(tf.layers.dense({units: 5, activation: 'relu'}));
 model.add(tf.layers.dense({units: 1}));
 model.summary();
 
