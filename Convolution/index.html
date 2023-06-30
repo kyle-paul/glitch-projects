@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tensorflow.js Convolutional Neuron Network</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>TensorFlow.js Fashion MNIST Classifier</h1>
+    <p id="status">Awaiting TF.js loaded</p>
+    <!-- Create a section box for the input -->
+    <section class="box">
+        <h2>Input image</h2>
+        <p>Input image is a 28x28 pixel grayscale image from the Fashion MNIST dataset - a piece of clothing</p>
+        <canvas id="canvas" width="28" height="28"></canvas>
+    </section>
+
+    <!-- Create a section box for the output -->
+    <section class="box">
+        <h2>Prediction</h2>
+        <p>Below yyou will se what item the trained Tensorflow.hs model has predicted from the input image</p>
+        <p id="prediction">Training model, Please wait...</p>
+    </section>
+
+    <!-- Create a section for slider ranging -->
+    <div class="blocky">
+        <p>Change interval between classifications. Currently 1000ms</p>
+        <input id="ranger" type="range" min="15" max="5000" value="2000" class="slider">
+    </div>
+
+    <!-- Import TensorFlow.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js" type="text/javascript"></script>
+    <script type="module" src="/script.js"></script>
+</body>
+</html>
