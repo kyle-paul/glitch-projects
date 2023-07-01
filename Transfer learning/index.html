@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,20 +33,55 @@
                     <button type="button" class="btn btn-outline-primary" id="reset">Reset</button>
                 </div>
 
-                <div class="progress mt-4" role="progressbar" aria-label="Basic example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress mt-4" role="progressbar" aria-label="Basic example" aria-valuenow="100"
+                    aria-valuemin="0" aria-valuemax="100">
                     <div class="progress-bar" style="width: 75%"></div>
                 </div>
 
-                <!-- User guidance -->
+                <!-- Description -->
                 <div class="alert alert-success mt-4" role="alert">
-                    <h4 class="alert-heading">User Guidance</h4>
+                    <h4 class="alert-heading">Brief Description</h4>
                     <p>
-                        <li>First enable webcam and allow access when asked.</li>
-                        <li>Now find an object, point cam at it, click and hold gather class 1 data button to gather at least 30 samples.</li>
-                        <li>Repeat for class 2 with a different object of interest. Get similar number of samples.</li>
-                        <li>Click train and predict and wait while the model is trained live in your browser. No data is sent to server.</li>
-                        <li>Once trained you will see live predictions appear above the video for what it thinks it sees.</li>
+                        This is a web application that uses a TensorFlow.js model to classify two objects with a webcam.
+                        The model I am using is MobileNetV3-Small-100-224, which is a lightweight image classification
+                        model that can recognize 1000 different classes of objects. The model is pre-trained on the
+                        ImageNet dataset, which is a large collection of images labeled with categories such as animals,
+                        plants, vehicles, etc.
                     </p>
+                </div>
+
+                <!-- User guidance -->
+                <p>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+                        aria-expanded="false" aria-controls="multiCollapseExample1">User Guild 1</a>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#multiCollapseExample2" aria-expanded="false"
+                        aria-controls="multiCollapseExample2">User Guild 2</button>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".multi-collapse" aria-expanded="false"
+                        aria-controls="multiCollapseExample1 multiCollapseExample2">Close both</button>
+                </p>
+                <div class="row">
+                    <div class="col">
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                            <div class="card card-body">
+                                First wait for about 1 min until the model loaded successfully.
+                                Next enable the webcam by hitting the button and allow access.
+                                Then when take the picture by pressing the button "gather class 1"
+                                and then "gather class 2".
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="collapse multi-collapse" id="multiCollapseExample2">
+                            <div class="card card-body">
+                                After gathering enough pictures (at least 100) for two classes. Hit the button
+                                "train and predict" and wait for the model to be trained (about 2mins). You can open
+                                console log
+                                to view the process of training. Finally, see the results
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

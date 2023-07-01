@@ -1,0 +1,13 @@
+video {
+    clear: both;
+    display: block;
+    margin: 10px;
+    background: #000000;
+    width: 640px;
+    height: 480px;
+    border-radius: 2%;
+}
+
+.removed {
+    display: none;
+}

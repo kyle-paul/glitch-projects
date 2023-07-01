@@ -148,16 +148,6 @@ function logProgress(epoch, logs) {
     console.log('Data for epoch: ' + epoch, logs);
 }
 
-var progress = document.getElementById("progress");
-var finished = false;
-function showOrHideProgress() {
-    if (finished) {
-        progress.style.visibility = "visible";
-    } else { 
-        progress.style.visibility = "hidden";
-    }
-}
-
 function predictLoop() {
     if (predict) {
         tf.tidy(function() {
